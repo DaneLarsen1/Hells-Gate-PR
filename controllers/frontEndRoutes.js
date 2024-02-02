@@ -3,12 +3,11 @@ const { Lift } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Route to home feed HTML
-router.get('/', withAuth, async (req, res) => { // withAuth checks if user is logged in, if not logged in, withAuth redirects users to log in, if logged in, proceed with function
+router.get('/', async (req, res) => { // TODO: ADD withAuth - withAuth checks if user is logged in, if not logged in, withAuth redirects users to log in, if logged in, proceed with function
     try {
-        const liftData = await Lift.findAll({
-            attributes: { include: ['title', 'description', 'user_id'] },
-        });
+        const liftData = await Lift.findAll();
 
+        console.log(liftData)
         // If you're logged in, the home feed will render the home page and inject liftData
         // TODO: change the liftData accordingly to the handlebars view for the homefeed
         res.render('homepage', {
@@ -23,12 +22,16 @@ router.get('/', withAuth, async (req, res) => { // withAuth checks if user is lo
 // Login in route
 // If users is logged in, it redirects them to homefeed ('/')
 router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/');
-        return;
+    try {
+        if (req.session.logged_in) {
+            res.redirect('/');
+            return;
+        }
+        // Else it renders the log in HTML
+        res.render('login');
+    } catch (err) {
+        res.status(404).json(err)
     }
-    // Else it renders the log in HTML
-    res.render('login');
 });
 
 // Route to get the dashboard of personal lifts
@@ -37,7 +40,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
 
         // liftData finds all data from Lift that matches the userId
-        const liftData = await Lift.findAll({ 
+        const liftData = await Lift.findAll({
             where: {
                 user_id: userId,
             },
@@ -53,6 +56,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     } catch (err) {
         res.status(500).render('error', `<p>Page Not Found</p>`); // TODO: Render an error message into the handlebars view when created
     }
-})
+});
+
+//TODO: Do we need a logout client side route?
 
 module.exports = router;

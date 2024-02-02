@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { User, Lift } = require('../models');
+const { User, Lift } = require('../../models');
 
 // Gets logged in user's lifts only
 router.get('/userLifts', withAuth, async (req, res) => {
@@ -38,4 +38,6 @@ router.post('/userLifts', withAuth, async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-})
+});
+
+module.exports = router;
