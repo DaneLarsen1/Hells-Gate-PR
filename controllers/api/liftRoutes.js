@@ -34,5 +34,8 @@ router.post('/userLifts', withAuth, async (req, res) => {
         });
 
         res.status(200).json(liftData)
+        
+    } catch (err) {
+
     }
 })
