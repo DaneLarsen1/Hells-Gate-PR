@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hells-Gate-PR</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    header {
+        background-color: black;
+        
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        font-size: 50px;
+    }
+
+    nav li {
+        display: inline;
+    }
+
+    nav a {
+        display: block;
+        color: white;
+        text-align: left;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    nav a:hover, nav a:focus {
+        background-color: #ddd;
+        color: black;
+    }
+
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+    h1 {
+        font-size: 60px;
+        border: 3px solid white;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 10px 10px grey;
+        display: inline-block;
+        padding: 10px 40px;
+        margin-left: 70px;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul id="nav-bar">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="*Put module to login here*">Login</a></li>
+                <li><a href="*Put module to logout here*">Logout</a></li>
+            </ul>
+        </nav>
+
+        <h1>Hells-Gate PR</h1>
+    </header>
+
+    <!-- <article id="blog-post-template" type="text/x-handlebars-template">
+        {{#each posts}}
+            <section class="post">
+                <h2>{{title}}</h2>
+                <p>{{content}}</p>
+                <footer>Posted by {{author}} on {{date}}</footer>
+            </section>
+        {{/each}}
+    </article> -->
+
+    <footer>
+        <!-- Page footer -->
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+    
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var source   = document.getElementById('blog-post-template').innerHTML;
+    var template = Handlebars.compile(source);
+
+    var context = {
+        posts: [
+            {
+                title: "Bench PR",
+                content: "Hit 225 for 1",
+                author: "Larry The Lobster",
+                date: "2/1/2024"
+            },
+            {
+                title: "Squat PR",
+                content: "8000 for 6 1/2",
+                author: "Terminator",
+                date: "2/1/2024"
+            }
+        ]
+    };
+
+    var html = template(context);
+    document.body.innerHTML += html;
+});
+
+    </script> -->
+
+</body>
+</html>
