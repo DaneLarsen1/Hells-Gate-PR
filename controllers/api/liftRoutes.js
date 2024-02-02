@@ -3,7 +3,7 @@ const withAuth = require('../../utils/auth');
 const { User, Lift } = require('../../models');
 
 // Gets logged in user's lifts only
-router.get('/userLifts', withAuth, async (req, res) => {
+router.get('/userLifts', async (req, res) => {
     try {
         const userId = req.session.user_id; // Stores the user's id in userId
 
