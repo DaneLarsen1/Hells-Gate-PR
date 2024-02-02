@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS hellsgate_db;
+CREATE DATABASE hellsgate_db;
