@@ -11,7 +11,7 @@ const sequelize = require("./config/connection");
 
 const sess = {
    secret: "Super secret secret",
-   cookie: {},
+   cookie: {},  //* need to add timeout
    resave: false,
    saveUninitialized: true,
    store: new SequelizeStore({
