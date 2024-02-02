@@ -4,7 +4,7 @@ async function newFormHandler(event) {
     const title = document.querySelector('input [name="lift-title"]').value;
     const content = document.querySelector('#lift-content').value;
     
-    const response = await fetch(`/api/lifts`, {    //* is this lifts or posts????
+    const response = await fetch(`/api/lift/userLifts`, {    //* is this lifts or posts????
         method: 'POST',
         body: JSON.stringify({
             title,
