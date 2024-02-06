@@ -27,7 +27,6 @@ app.use(session(sess));
 
 
 
-// const exphbs = require('express-handlebars'); //* to set up handlebars as the app's template engine of choice
 // const hbs = exphbs.create({ helpers }); //* pass the helpers to the express handlebars method
 // app.engine('handlebars', hbs.engine); //* sets express engine 'handlebars' from handlebars' engine
 // app.set('view engine', 'handlebars'); //* sets 'view engine' from app.engine
