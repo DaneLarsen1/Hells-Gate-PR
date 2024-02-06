@@ -1,5 +1,5 @@
-const Lift = require("./Lift");
 const User = require("./User");
+const Lift = require("./Lift");
 
 // Create the associations
 User.hasMany(Lift, {

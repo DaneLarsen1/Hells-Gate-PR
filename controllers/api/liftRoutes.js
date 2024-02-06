@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const withAuth = require('../../utils/auth');
 const { Lift } = require('../../models');
+const withAuth = require('../../utils/auth');
 const sequelize = require('../../config/connection');
 
 // Gets logged in user's lifts only
+// TODO: Add withAuth
 router.get('/userLifts', async (req, res) => {
     try {
         const userId = req.session.user_id; // Stores the user's id in userId
@@ -19,7 +20,7 @@ router.get('/userLifts', async (req, res) => {
         res.status(200).json(liftData)
 
     } catch (err) {
-        res.status(500).render('error', `<p>Page Not Found</p>`); // TODO: Render an error message into the handlebars view when created
+        res.status(500).json(err); // TODO: Render an error message into the handlebars view when created
     }
 });
 
@@ -34,7 +35,7 @@ router.post('/userLifts', withAuth, async (req, res) => {
             user_id: userId,
         });
 
-        res.status(200).json(liftData)
+        res.status(200).json(liftData)  //* render from frontEndRoutes
         
     } catch (err) {
         res.status(500).json(err);
