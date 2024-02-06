@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { User, Lift } = require('../../models');
+const { Lift } = require('../../models');
+const sequelize = require('../../config/connection');
 
 // Gets logged in user's lifts only
 router.get('/userLifts', async (req, res) => {
