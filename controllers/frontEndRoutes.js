@@ -10,7 +10,7 @@ router.get('/', async (req, res) => { // TODO: ADD withAuth - withAuth checks if
         console.log(liftData)
         // If you're logged in, the home feed will render the home page and inject liftData
         // TODO: change the liftData accordingly to the handlebars view for the homefeed
-        res.render('homepage', {
+        res.render('home', {
             liftData,
             logged_in: req.session.logged_in,
         });
