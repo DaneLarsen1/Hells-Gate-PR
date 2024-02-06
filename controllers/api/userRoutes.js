@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const bcrypt = require('bcrypt');
+const sequelize = require('../../config/connection');
 
 // Create new user
 router.post('/signup', async (req, res) => {
