@@ -1,0 +1,17 @@
+[
+   {
+      "title": "Squat",
+      "description": "An intermediate lift ",
+      "user_id": 1
+   },
+   {
+      "title": "Deadlift",
+      "description": "An intermediate lift!",
+      "user_id": 2
+   },
+   {
+      "title": "Snatch",
+      "description": "Very difficult lift.",
+      "user_id": 3
+   }
+]
