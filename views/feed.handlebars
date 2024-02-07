@@ -15,8 +15,9 @@
     </div>
     <div class="col-md-7">
       <p>
+        {{!-- Uses the User model alias 'user' to get the username attribute that was included in the query for Lift.findAll --}}
         Posted by:
-        {{lift.user_id}}
+        {{lift.user.username}} 
       </p>
     </div>
   {{/each}}
