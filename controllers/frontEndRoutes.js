@@ -59,15 +59,15 @@ router.get("/login", (req, res) => {
 //TODO: ADD withAuth
 router.get("/dashboard", async (req, res) => {
    try {
-      const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
+      // const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
 
       // liftData finds all data from Lift that matches the userId
-      const liftData = await Lift.findAll({
-         where: {
-            user_id: userId,
-         },
+      const liftData = await Lift.findAll(
+         // where: {
+         //    user_id: userId,
+         // },
          //TODO: time constraint
-      });
+      );
 
       const lifts = liftData.map((lift) => {
          return lift.get({plain: true})
@@ -80,7 +80,7 @@ router.get("/dashboard", async (req, res) => {
       // Should it be an object like {liftData}
       res.render("dashboard", {
          lifts,
-         logged_in: req.session.logged_in,
+         // logged_in: req.session.logged_in,
       });
    } catch (err) {
       res.status(500).json(err); // TODO: Render an error page into the handlebars view when created

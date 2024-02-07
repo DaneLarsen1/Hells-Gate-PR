@@ -49,11 +49,3 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); 
  
 app.use(express.static(path.join(__dirname, 'public'))); 
-
-app.get('/', (req, res) => {
-   res.render('home', { 
-       title: 'Home Page',
-       userLoggedIn: req.session.isLoggedIn, 
-       username: req.session.username 
-   });
-});
