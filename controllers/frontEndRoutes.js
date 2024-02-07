@@ -83,7 +83,7 @@ router.get("/dashboard", async (req, res) => {
          logged_in: req.session.logged_in,
       });
    } catch (err) {
-      res.status(500).render("error", `<p>Page Not Found</p>`); // TODO: Render an error message into the handlebars view when created
+      res.status(500).json(err); // TODO: Render an error page into the handlebars view when created
    }
 });
 
