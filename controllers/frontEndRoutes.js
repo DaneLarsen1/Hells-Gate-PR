@@ -87,4 +87,22 @@ router.get("/dashboard", async (req, res) => {
    }
 });
 
+//TODO: Add withAuth
+router.get("/progress", async (req, res) => {
+   try {
+      const liftData = await Lift.findAll();
+      
+      const lifts = liftData.map((lift) => {
+         return lift.get({plain: true})
+      });
+      // Change to where user matches logged in user
+      res.render("progress", {
+         lifts,
+      });
+   } catch (err) {
+      res.status(500).json(err);
+   }
+});
+
+
 module.exports = router;
