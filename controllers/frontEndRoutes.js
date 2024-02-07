@@ -2,8 +2,17 @@ const router = require("express").Router();
 const { Lift, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-// Route to home feed HTML
+
 router.get("/", async (req, res) => {
+   try {
+      res.render("home")
+   } catch (err) {
+      res.status(500).json(err);
+   }
+});
+
+// Route to home feed HTML
+router.get("/feed", async (req, res) => {
    // TODO: ADD withAuth - withAuth checks if user is logged in, if not logged in, withAuth redirects users to log in, if logged in, proceed with function
    try {
       const liftData = await Lift.findAll({
@@ -22,7 +31,7 @@ router.get("/", async (req, res) => {
       });
       // If you're logged in, the home feed will render the home page and inject liftData
       // TODO: change the liftData accordingly to the handlebars view for the homefeed
-      res.render("home", {
+      res.render("feed", {
          lifts,
          logged_in: req.session.logged_in,
       });
@@ -47,7 +56,8 @@ router.get("/login", (req, res) => {
 });
 
 // Route to get the dashboard of personal lifts
-router.get("/dashboard", withAuth, async (req, res) => {
+//TODO: ADD withAuth
+router.get("/dashboard", async (req, res) => {
    try {
       const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
 
