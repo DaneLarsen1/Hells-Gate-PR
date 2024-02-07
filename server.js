@@ -49,27 +49,3 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); 
  
 app.use(express.static(path.join(__dirname, 'public'))); 
-
-app.get('/', (req, res) => {
-   res.render('home', { 
-       title: 'Home Page',
-       userLoggedIn: req.session.isLoggedIn, 
-       username: req.session.username 
-   });
-});
-
-app.get('/dashboard', (req, res) => {
-   console.log('Dashboard route was hit');
-   res.render('dashboard', {
-       title: 'Dashboard Page',
-   });
-});
-
-app.get('/login', (req, res) => {
-   res.render('login', { title: 'Login' }); 
-});
-
-app.get('/logout', (req, res) => {
-   
-   res.redirect('/'); 
-});
