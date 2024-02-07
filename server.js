@@ -57,3 +57,19 @@ app.get('/', (req, res) => {
        username: req.session.username 
    });
 });
+
+app.get('/dashboard', (req, res) => {
+   console.log('Dashboard route was hit');
+   res.render('dashboard', {
+       title: 'Dashboard Page',
+   });
+});
+
+app.get('/login', (req, res) => {
+   res.render('login', { title: 'Login' }); 
+});
+
+app.get('/logout', (req, res) => {
+   
+   res.redirect('/'); 
+});
