@@ -15,8 +15,11 @@ router.get("/", async (req, res) => {
          ],
       });
 
-      const lifts = liftData.map((lift) => lift.get({ plain: true }));
+      // const lifts = liftData.map((lift) => lift.get({ plain: true }));
 
+      const lifts = liftData.map((lift) => {
+         return lift.get({plain: true})
+      });
       // If you're logged in, the home feed will render the home page and inject liftData
       // TODO: change the liftData accordingly to the handlebars view for the homefeed
       res.render("home", {
@@ -56,10 +59,17 @@ router.get("/dashboard", withAuth, async (req, res) => {
          //TODO: time constraint
       });
 
+      const lifts = liftData.map((lift) => {
+         return lift.get({plain: true})
+      });
+      // const lifts = liftData.map((lift) => lift.get({ plain: true }));
+      // console.log(lifts);
+
       // Renders the dashboard view with the user's liftData
       //TODO: change the liftData to be relevant to the handlebars view for dashboard
+      // Should it be an object like {liftData}
       res.render("dashboard", {
-         liftData,
+         lifts,
          logged_in: req.session.logged_in,
       });
    } catch (err) {
