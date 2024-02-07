@@ -1,0 +1,23 @@
+<div class="all-PRs-container">
+  <div class="card-header">
+    <h2>Feed</h2>
+  </div>  
+
+  <p>testing</p>
+  <!-- For each dish in the array of dish objects, the following <div> will be rendered. -->
+  {{#each lifts as |lift|}}
+    <div class="lift">
+      <!-- We use dish.id instead of <od> and <li> elements. -->
+      <p>
+        {{lift.title}}
+        {{lift.description}}
+      </p>
+    </div>
+    <div class="col-md-7">
+      <p>
+        Posted by:
+        {{lift.user_id}}
+      </p>
+    </div>
+  {{/each}}
+</div>
