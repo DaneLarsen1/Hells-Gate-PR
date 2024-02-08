@@ -25,10 +25,11 @@ router.get('/userLifts', async (req, res) => {
 });
 
 // Create a new lift 
-router.post('/userLifts', withAuth, async (req, res) => {
+//TODO: ADD withAuth
+router.post('/userLifts', async (req, res) => {
     try {
         const userId = req.session.user_id;
-
+        console.log(userId)
         const liftData = await Lift.create({
             title: req.body.title,
             description: req.body.description,
