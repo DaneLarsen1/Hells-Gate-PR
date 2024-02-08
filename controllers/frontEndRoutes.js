@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Lift, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-
+// Route to the home page
 router.get("/", async (req, res) => {
    try {
       res.render("home")
@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
    }
 });
 
-// Route to home feed HTML
+// Route to feed HTML
 router.get("/feed", async (req, res) => {
    // TODO: ADD withAuth - withAuth checks if user is logged in, if not logged in, withAuth redirects users to log in, if logged in, proceed with function
    try {
@@ -101,6 +101,16 @@ router.get("/progress", async (req, res) => {
       res.render("progress", {
          lifts,
       });
+   } catch (err) {
+      res.status(500).json(err);
+   }
+});
+
+// Route to make a new post
+// TODO: Add withAuth
+router.get("/newpost", async (req, res) => {
+   try {
+      res.render("newpost")
    } catch (err) {
       res.status(500).json(err);
    }

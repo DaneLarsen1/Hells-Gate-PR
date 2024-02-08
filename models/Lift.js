@@ -16,7 +16,7 @@ Lift.init(
          allowNull: false,
       },
       description: {
-         type: DataTypes.TEXT,
+         type: DataTypes.JSON,
          allowNull: false,
       },
       user_id: {

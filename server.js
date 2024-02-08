@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 const sess = {
    secret: "Super secret secret",
    cookie: {   //* Added cookie stuff from mini project example Module 14
-      maxAge: 300000,
+      maxAge: 3600000,
       httpOnly: true,
       secure: false,
       sameSite: "strict",
