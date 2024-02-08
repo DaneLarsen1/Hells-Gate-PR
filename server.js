@@ -49,3 +49,12 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); 
  
 app.use(express.static(path.join(__dirname, 'public'))); 
+
+app.get('/progress', (req, res) => {
+   const goalsData = [
+       { description: 'Bench Press 300 lbs', percentage: 75 },
+       { description: 'Run 5 miles without stopping', percentage: 50 },
+   ];
+ 
+   res.render('progress', { goals: goalsData });
+});

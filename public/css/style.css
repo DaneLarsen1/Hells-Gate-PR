@@ -247,10 +247,10 @@ header {
 
 .promo-box {
     position: absolute; 
-    top: 92%;
+    top: 94%;
     left: 50%; 
     transform: translate(-50%, -50%); 
-    background: rgba(0, 0, 0, 0.5); 
+    /* background: rgba(0, 0, 0, 0.5);  */
     color: white; 
     padding: 20px; 
     text-align: center; 
@@ -258,10 +258,10 @@ header {
     z-index: 2; 
 }
 
-.promo-box h2 {
+/* .promo-box h2 {
     margin: 0 0 20px 0; 
     font-size: 1.5em; 
-}
+} */
 
 .btn {
     background-color: #e74c3c;
@@ -272,8 +272,107 @@ header {
     border: none; 
     cursor: pointer; 
     border-radius: 5px; 
+    font-size: 20px;
+
 }
 
 .btn:hover {
     background-color: #c0392b; 
+}
+
+
+
+/* PROGRESS STYLES */
+
+.goals-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa; /* Light background to differentiate the section */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.goals-section h2 {
+    color: #333; /* Dark color for contrast */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.goal {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out; 
+}
+
+.progress {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    height: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background-color: #4caf50; /* Green color */
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.goal:last-child {
+    margin-bottom: 0; /* Remove margin from the last goal */
+}
+
+.goal p {
+    color: #555; /* Slightly lighter color for the goal text */
+    margin: 0; /* Remove default margins */
+}
+
+.goal:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.progress-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.overview-section, .charts-section, .goals-section {
+    margin-bottom: 40px;
+}
+
+.progress-page-container {
+    display: flex;
+    justify-content: space-between; /* This will place left-content and charts-section side by side */
+    height: 100vh; /* Full viewport height */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.left-content {
+    width: calc(60% - 20px); 
+    overflow-y: auto; /* Allows scrolling within the left-content section if content overflows */
+}
+
+.charts-section {
+    width: calc(33% - 20px); 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.chart-container {
+    width: 100%; /* Makes sure chart containers fill the charts-section */
+    margin-bottom: 20px; /* Space between charts */
+    margin-right: 40px;
+}
+
+.chart-container:last-child {
+    margin-bottom: 0; /* Removes margin from the last chart container */
 }
