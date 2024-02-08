@@ -29,6 +29,8 @@ router.get("/feed", async (req, res) => {
       const lifts = liftData.map((lift) => {
          return lift.get({plain: true})
       });
+
+      console.log(lifts)
       // If you're logged in, the home feed will render the home page and inject liftData
       // TODO: change the liftData accordingly to the handlebars view for the homefeed
       res.render("feed", {
