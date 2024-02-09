@@ -17,8 +17,13 @@ router.post('/signup', async (req, res) => {
             password: hashedPassword, // Stores the hashed password to the database
         });
 
+        const serializedUserData = userData.get({ plain: true });
+
+        console.log(serializedUserData)
+
         // Saves the current session 
         req.session.save(() => {
+            req.session.user_id = serializedUserData.id;
             req.session.logged_in = true;
 
             res.status(200).json(userData);
@@ -37,7 +42,7 @@ router.post('/login', async (req, res) => {
             where: { email: req.body.email },
             attributes: ['id', 'username', 'email', 'password']
         });
-        console.log(userData)
+        
         // If the email is not found, send error
         if (!userData) {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
@@ -45,7 +50,7 @@ router.post('/login', async (req, res) => {
         }
 
         const serializedUserData = userData.get({ plain: true });
-
+        console.log(serializedUserData)
         // bcrypt compares the user's password input with the hashed password that was saved as if it wasn't hashed
         const validPassword = await bcrypt.compare(
             req.body.password,

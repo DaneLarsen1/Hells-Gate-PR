@@ -29,13 +29,13 @@ router.get('/userLifts', async (req, res) => {
 router.post('/userLifts', async (req, res) => {
     try {
         const userId = req.session.user_id;
-        console.log(userId)
+        
         const liftData = await Lift.create({
             title: req.body.title,
             description: req.body.description,
             user_id: userId,
         });
-
+        console.log(liftData)
         res.status(200).json(liftData)  //* render from frontEndRoutes
         
     } catch (err) {

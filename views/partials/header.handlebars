@@ -10,8 +10,12 @@
             <li><a href="/">Home</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/feed">PR Feed</a></li>
+            {{#unless logged_in}}
             <li><a href="/login">Login</a></li>
+            {{/unless}}
+            {{#if logged_in}}
             <li id="logout"><a>Logout</a></li>
+            {{/if}}
         </ul>
     </nav>
 </header>
