@@ -1,0 +1,18 @@
+[
+   {
+      "title": "Squat",
+      "description": {
+         "weight": 255,
+         "unit": "kg"
+      },
+      "user_id": 1
+   },
+   {
+      "title": "Deadlift",
+      "description": {
+         "weight": 135,
+         "unit": "lbs"
+      },
+      "user_id": 2
+   }
+]
