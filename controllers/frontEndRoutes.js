@@ -73,6 +73,9 @@ router.get("/dashboard", withAuth, async (req, res) => {
          }
       });
 
+
+      console.log('LIFT DATA', liftData[0])
+
       const lifts = liftData.map((lift) => {
          return lift.get({ plain: true })
       });

@@ -1,47 +1,79 @@
+<div class="entire-dashboard">
 <div class="three-boxes-container">
   <div class="box">
-    <img class="box-image-1" src="/videos/Bench-Photoroom.png" alt="Bench Press">
+    <img class="box-image-1 box-image" src="/videos/new-bench.jpg" alt="Bench Press">
     <h3 class="box-title">BENCH</h3>
     <div class="box-content">
       <div class="inner-box">
         {{#each lifts as |lift|}}
-        <div class="single-squat-container">
-          <div>
+        {{#if lift.bench}}
+        <div class="single-bench-container">
+          <div class="createdAt">
             {{format_date lift.createdAt}}
           </div>
-          <div>
+          <div class="dashboardLiftTitle">
             {{lift.title}}
           </div>
           <div>
             {{lift.description.weight}} {{lift.description.unit}}
           </div>
         </div>
+        {{/if}}
         {{/each}}
       </div>
 
     </div>
   </div>
   <div class="box">
-    <img class="box-image-2" src="/videos/squat.jpeg" alt="Squat">
+    <img class="box-image-2 box-image" src="/videos/new-squat.jpg" alt="Squat">
     <h3 class="box-title">SQUAT</h3>
     <div class="box-content">
       <div class="inner-box">
-
+        {{#each lifts as |lift|}}
+        {{#if lift.squat}}
+        <div class="single-squat-container">
+          <div class="createdAt">
+            {{format_date lift.createdAt}}
+          </div>
+          <div class="dashboardLiftTitle">
+            {{lift.title}}
+          </div>
+          <div>
+            {{lift.description.weight}} {{lift.description.unit}}
+          </div>
+        </div>
+        {{/if}}
+        {{/each}}
       </div>
 
     </div>
   </div>
   <div class="box">
-    <img class="box-image-3" src="/videos/Deadlift-Photoroom.png" alt="Deadlift">
+    <img class="box-image-3 box-image" src="/videos/new-deadlift.jpg" alt="Deadlift">
     <h3 class="box-title">DEADLIFT</h3>
     <div class="box-content">
       <div class="inner-box">
-
+{{#each lifts as |lift|}}
+        {{#if lift.deadlift}}
+        <div class="single-deadlift-container">
+          <div class="createdAt">
+            {{format_date lift.createdAt}}
+          </div>
+          <div class="dashboardLiftTitle">
+            {{lift.title}}
+          </div>
+          <div>
+            {{lift.description.weight}} {{lift.description.unit}}
+          </div>
+        </div>
+        {{/if}}
+        {{/each}}
       </div>
 
     </div>
   </div>
 </div>
 <div class="promo-box">
-    <a href="/newpost" class="btn">New Post +</a>
+  <a href="/newpost" class="btn">New Post +</a>
+</div>
 </div>
