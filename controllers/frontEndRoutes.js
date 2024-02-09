@@ -6,14 +6,16 @@ const sequelize = require("../config/connection")
 // Route to the home page
 router.get("/", async (req, res) => {
    try {
-      res.render("home");
+      res.render("home", {
+         logged_in: req.session.logged_in,
+      })
    } catch (err) {
       res.status(500).json(err);
    }
 });
 
 // Route to feed HTML
-router.get("/feed", async (req, res) => {
+router.get("/feed", withAuth, async (req, res) => {
    // TODO: ADD withAuth - withAuth checks if user is logged in, if not logged in, withAuth redirects users to log in, if logged in, proceed with function
    try {
       const liftData = await Lift.findAll({
@@ -28,12 +30,10 @@ router.get("/feed", async (req, res) => {
       // const lifts = liftData.map((lift) => lift.get({ plain: true }));
 
       const lifts = liftData.map((lift) => {
-         return lift.get({plain: true})
+         return lift.get({ plain: true })
       });
 
-      console.log(lifts)
       // If you're logged in, the home feed will render the home page and inject liftData
-      // TODO: change the liftData accordingly to the handlebars view for the homefeed
       res.render("feed", {
          lifts,
          logged_in: req.session.logged_in,
@@ -60,47 +60,55 @@ router.get("/login", (req, res) => {
 
 // Route to get the dashboard of personal lifts
 //TODO: ADD withAuth
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
    try {
-      // const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
+      const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
+
+      console.log(req.session)
 
       // liftData finds all data from Lift that matches the userId
-      const liftData = await Lift.findAll(
-         // where: {
-         //    user_id: userId,
-         // },
-         //TODO: time constraint
-      );
+      const liftData = await Lift.findAll({
+         where: {
+            user_id: userId,
+         }
+      });
 
       const lifts = liftData.map((lift) => {
-         return lift.get({plain: true})
+         return lift.get({ plain: true })
       });
-      // const lifts = liftData.map((lift) => lift.get({ plain: true }));
-      // console.log(lifts);
 
       // Renders the dashboard view with the user's liftData
-      //TODO: change the liftData to be relevant to the handlebars view for dashboard
-      // Should it be an object like {liftData}
       res.render("dashboard", {
          lifts,
-         // logged_in: req.session.logged_in,
+         logged_in: req.session.logged_in,
       });
    } catch (err) {
-      res.status(500).json(err); // TODO: Render an error page into the handlebars view when created
+      res.status(500).json(err);
    }
 });
 
 //TODO: Add withAuth
-router.get("/progress", async (req, res) => {
+router.get("/progress", withAuth, async (req, res) => {
    try {
-      const liftData = await Lift.findAll();
-      
-      const lifts = liftData.map((lift) => {
-         return lift.get({plain: true})
+      const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
+
+      console.log(req.session)
+
+      // liftData finds all data from Lift that matches the userId
+      const liftData = await Lift.findAll({
+         where: {
+            user_id: userId,
+         },
       });
-      // Change to where user matches logged in user
+
+      const lifts = liftData.map((lift) => {
+         return lift.get({ plain: true })
+      });
+
+      // Renders the dashboard view with the user's liftData
       res.render("progress", {
          lifts,
+         logged_in: req.session.logged_in,
       });
    } catch (err) {
       res.status(500).json(err);
@@ -109,9 +117,11 @@ router.get("/progress", async (req, res) => {
 
 // Route to make a new post
 // TODO: Add withAuth
-router.get("/newpost", async (req, res) => {
+router.get("/newpost", withAuth, async (req, res) => {
    try {
-      res.render("newpost")
+      res.render("newpost", {
+         logged_in: req.session.logged_in,
+      })
    } catch (err) {
       res.status(500).json(err);
    }
