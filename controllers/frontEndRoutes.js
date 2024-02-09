@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const { Lift, User } = require("../models");
 const withAuth = require("../utils/auth");
+const sequelize = require("../config/connection")
 
 // Route to the home page
 router.get("/", async (req, res) => {
    try {
-      res.render("home")
+      res.render("home");
    } catch (err) {
       res.status(500).json(err);
    }
