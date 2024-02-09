@@ -19,6 +19,18 @@ Lift.init(
          type: DataTypes.JSON,
          allowNull: false,
       },
+      squat: {
+         type: DataTypes.BOOLEAN,
+         defaultValue: false,
+      },
+      bench: {
+         type: DataTypes.BOOLEAN,
+         defaultValue: false,
+      },
+      deadlift: {
+         type: DataTypes.BOOLEAN,
+         defaultValue: false,
+      },
       user_id: {
          type: DataTypes.INTEGER,
          references: {

@@ -5,7 +5,7 @@ const sequelize = require('../../config/connection');
 
 // Gets logged in user's lifts only
 // TODO: Add withAuth
-router.get('/userLifts', async (req, res) => {
+router.get('/userLifts', withAuth, async (req, res) => {
     try {
         const userId = req.session.user_id; // Stores the user's id in userId
 
@@ -26,15 +26,53 @@ router.get('/userLifts', async (req, res) => {
 
 // Create a new lift 
 //TODO: ADD withAuth
-router.post('/userLifts', async (req, res) => {
+router.post('/userLifts', withAuth, async (req, res) => {
     try {
         const userId = req.session.user_id;
         
-        const liftData = await Lift.create({
-            title: req.body.title,
-            description: req.body.description,
-            user_id: userId,
-        });
+        let liftData;
+
+        if(req.body.title === "Squat"){
+            console.log("Squat")
+             liftData = await Lift.create({
+                title: req.body.title,
+                description: req.body.description,
+                user_id: userId,
+            });
+
+             liftData.squat = true;
+             await liftData.save()
+        };
+
+        if(req.body.title === "Bench"){
+             liftData = await Lift.create({
+                title: req.body.title,
+                description: req.body.description,
+                bench: true,
+                user_id: userId,
+            });
+
+            liftData.bench = true;
+             await liftData.save()
+        };
+
+        if(req.body.title === "Deadlift"){
+             liftData = await Lift.create({
+                title: req.body.title,
+                description: req.body.description,
+                deadlift: true,
+                user_id: userId,
+            });
+
+            liftData.deadlift = true;
+             await liftData.save()
+        };
+        
+        // const liftData = await Lift.create({
+        //     title: req.body.title,
+        //     description: req.body.description,
+        //     user_id: userId,
+        // });
         console.log(liftData)
         res.status(200).json(liftData)  //* render from frontEndRoutes
         

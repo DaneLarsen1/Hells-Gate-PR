@@ -163,7 +163,7 @@ header {
     align-items: stretch; 
   }
   
-  .box {
+  /* .box {
     flex-basis: calc(33.333% - 40px); 
     box-sizing: border-box; 
     margin: 30px; 
@@ -177,7 +177,7 @@ header {
     justify-content: flex-start; 
     align-items: center; 
     border-radius: 10px;
-  }
+  } */
 
   .box-title {
     margin: 0;
@@ -187,10 +187,9 @@ header {
     margin-top: -30px;
   }
 
-  .box-image-1 {
+  /* .box-image-1 {
     width: auto; 
     height: 40%; 
-    /* max-height: 20%;  */
     object-fit: cover; 
     padding-bottom: 10px; 
     margin-top: -20px;
@@ -199,7 +198,6 @@ header {
   .box-image-2 {
     width: auto; 
     height: 50%; 
-    /* max-height: 20%;  */
     object-fit: cover; 
     padding-bottom: 10px; 
     margin-top: -20px;
@@ -209,15 +207,14 @@ header {
   .box-image-3 {
     width: auto; 
     height: 60%; 
-    /* max-height: 20%;  */
     object-fit: cover; 
     padding-bottom: 10px; 
     margin-top: -20px;
     margin-bottom: -70px;
     margin-left: -10px;
-  }
+  } */
   
-  .inner-box {
+  /* .inner-box {
     border: 3px solid black; 
     margin: 0; 
     padding: 20px; 
@@ -229,7 +226,7 @@ header {
     scrollbar-width: thin;
     scrollbar-color: black grey;
     position: absolute;
-  }
+  } */
 
   .inner-box p {
     font-family: 'Roboto', sans-serif;
@@ -466,3 +463,113 @@ footer {
     margin-top: 20px; 
     align-self: center;
 }
+
+/* CAMILLE DASHBOARD STYLE ADDITIONS */
+.single-bench-container, .single-squat-container, .single-deadlift-container {
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+.createdAt {
+    font-weight: bolder;
+}
+
+.dashboardLiftTitle {
+    font-size: larger;
+    margin: 10px 0px;
+}
+
+.entire-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-image {
+    height: 20vh;
+}
+
+/* CAMILLE FEED STYLE ADDITIONS */
+.all-PRs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 75vh;
+}
+
+.feed-header {
+    direction: flex;
+    justify-content: center;
+}
+
+.feed-container {
+    border: 3px solid black; 
+    margin: 0; 
+    padding: 20px; 
+    height: 50vh;
+    width: 90vw;
+    overflow-y: auto; 
+    box-shadow: 0 4px 6px darkgrey;
+    scrollbar-width: thin;
+    scrollbar-color: black grey;
+}
+
+.each-public-lift {
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 0px 10px 0px;
+}
+
+.posted-by {
+    display: flex;
+    justify-content: right;
+}
+
+.feedLiftTitle {
+    font-size: larger;
+}
+
+/* CAMILLE REDO DASHBOARD */
+.box {
+    flex-basis: calc(33.333% - 40px); 
+    box-sizing: border-box; 
+    margin: 30px; 
+    padding: 20px; 
+    height: 60vh; 
+    width: 30vw;
+    background-color: white; 
+    border: 6px solid black; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    border-radius: 10px;
+  }
+
+  .inner-box {
+    border: 3px solid black; 
+    margin: 0; 
+    padding: 20px; 
+    height: 30vh; 
+    width: 20vw;
+    overflow-y: auto; 
+    background: linear-gradient(to bottom, yellow, orange, red);
+    box-shadow: 0 4px 6px darkgrey;
+    scrollbar-width: thin;
+    scrollbar-color: black grey;
+    position: absolute;
+  }

@@ -5,6 +5,7 @@
          "weight": 255,
          "unit": "kg"
       },
+      "squat": true,
       "user_id": 1
    },
    {
@@ -13,6 +14,7 @@
          "weight": 135,
          "unit": "lbs"
       },
+      "deadlift": true,
       "user_id": 2
    }
 ]
