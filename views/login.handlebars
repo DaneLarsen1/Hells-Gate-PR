@@ -1,25 +1,43 @@
+</Head>
 <main>
-    <div>
-      <form class="form login-form">
-        <label for= "email">Email:</label>
-        <input type ="text" name="email" id="email-login">
-        <label for= "password">Password:</label>
-        <input type="password" name="password" id="password-login">
-        <button type="submit">Login</button>
-        {{!-- <input type="checkbox" checked="checked" name="remember"> Remember me --}}
-      </form>  
+  <Section class="container forms">
+    <div class="form login">
+      <div class="form content">
+        <form class="login-form">
+        <h6>Login</h6>
+           <div class="field input-field">
+              <input type="email" placeholder="Email" class="input" id="email-login">
+           </div>
+            <div class="field input-field">
+              <input type="password" placeholder="Password" class="password" id="password-login">
+           </div>
+            <div class="field button-field">
+              <button type="submit">Login</button>
+              <div class="form-link">Don't have an account? <a href="#" class="signup-link">Signup!</a></div>
+           </div>
+        </form>
+      </div>
     </div>
-    <div>
-      <form class="form signup-form">
-        <label for="username">Username:</label>
-        <input type ="text" name="username" id="username-signup">
-        <label for= "email">Email:</label>
-        <input type="text" name="email" id="email-signup">
-        <label for= "password">Password:</label>
-        <input type="password" name="password" id="password-signup">
-        <button type="submit">Sign up</button>
-      </form>
-    </div>
+    {{!-- sign up form --}}
+    {{!-- <div class="form signup">
+      <div class="form content">
+        <form class="signup-form">
+        <h6>Sign up</h6>
+           <div class="field input-field">
+              <input type="name" placeholder="Name" class="input" id="username-signup">
+           </div>
+           <div class="field input-field">
+              <input type="email" placeholder="Email" class="input" id="email-signup">
+           </div>
+            <div class="field input-field">
+              <input type="password" placeholder="Password" class="password" id="password-signup">
+           </div>
+            <div class="field button-field">
+              <button type="submit">Sign up</button>
+           </div>
+        </form>
+    </div> --}}
+  </Section> 
 </main>
 
 <script src="/js/login.js"></script>
