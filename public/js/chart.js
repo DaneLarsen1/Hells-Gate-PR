@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     };
 
-    const enduranceData = {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-        datasets: [{
-            label: 'Running Distance',
-            data: [2, 2.5, 3, 3.5],
-            fill: true,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-        }]
-    };
+    // const enduranceData = {
+    //     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+    //     datasets: [{
+    //         label: 'Running Distance',
+    //         data: [2, 2.5, 3, 3.5],
+    //         fill: true,
+    //         backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    //         borderColor: 'rgb(75, 192, 192)',
+    //         tension: 0.1
+    //     }]
+    // };
 
     const strengthChartCtx = document.getElementById('strength-chart').getContext('2d');
     const strengthChart = new Chart(strengthChartCtx, {
@@ -78,4 +78,36 @@ app.get('/progress', (req, res) => {
     });
   });
 
-  
+
+
+
+document.getElementById('goalsButton').addEventListener('click', function() {
+  showGoalOptions();
+});
+
+function showGoalOptions() {
+    // Check if a modal already exists, if so, remove it
+    const existingModal = document.querySelector('.goal-options-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    // Create a new modal element
+    const modal = document.createElement('div');
+    modal.className = 'goal-options-modal';
+
+    // Add goal options to the modal
+    const goals = ['Stronger Bench', 'Stronger Deadlift', 'Run Faster'];
+    goals.forEach(goal => {
+        const goalButton = document.createElement('button');
+        goalButton.innerText = goal;
+        goalButton.addEventListener('click', function() {
+            // Here you can link to resources or handle the choice
+            window.location.href = '/resource/' + goal.replace(' ', '-').toLowerCase();
+        });
+        modal.appendChild(goalButton);
+    });
+
+    // Append the modal to the body or a specific div
+    document.body.appendChild(modal);
+    };
