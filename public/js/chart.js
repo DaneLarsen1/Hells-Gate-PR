@@ -1,113 +1,142 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const strengthData = {
-        labels: ['January', 'February', 'March', 'April'],
-        datasets: [
+document.addEventListener("DOMContentLoaded", async function () {
+   const response = await fetch("/api/lift/userLifts", {
+      method: "GET",
+      headers: {
+         "Content-Type": "application/json",
+      },
+   });
+
+   if (response.ok) {
+      const liftData = await response.json();
+
+      updateChart(liftData);
+   } else {
+      console.error(response.statusText);
+   }
+});
+
+const formattedDate = (date) => {
+   return new Date(date).toLocaleDateString();
+};
+
+function updateChart(liftData) {
+   const filteredSquatData = liftData.filter((lift) => lift.title === "Squat" && lift.description.unit === "lbs");
+   const squatXAxis = filteredSquatData.map((lift) => formattedDate(lift.createdAt));
+   const squatYAxis = filteredSquatData.map((lift) => lift.description.weight);
+
+   const ctxSquat = document.getElementById("squat-chart").getContext("2d");
+   const squatChart = new Chart(ctxSquat, {
+      type: "line",
+      data: {
+         labels: squatXAxis,
+         datasets: [
             {
-            label: 'Max Bench Press',
-            data: [200, 205, 210, 215],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-        },
-        {
-            label: 'Max Deadlift',
-            data: [250, 260, 270, 280],
-            borderColor: 'rgb(255, 99, 132)', 
-            tension: 0.1,
-            fill: false
-        },
-        {
-            label: 'Max Squat',
-            data: [220, 230, 240, 250], 
-            borderColor: 'rgb(54, 162, 235)', 
-            tension: 0.1,
-            fill: false
-        }
-        ]
-    };
+               label: "Squat",
+               data: squatYAxis,
+               backgroundColor: "rgb(141, 134, 225)",
+               borderColor: "rgb(141, 134, 225)",
+               borderWidth: 1,
+            },
+         ],
+      },
+      options: {
+         scales: {
+            y: {
+               beginAtZero: true,
+               title: {
+                  display: true,
+                  text: "Weight (lbs)", // Label for the y-axis
+                  color: "rgb(84, 78, 163)",
+               },
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: "Date Added", // Label for the x-axis
+                  color: "rgb(84, 78, 163)",
+               },
+            },
+         },
+      },
+   });
 
-    // const enduranceData = {
-    //     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-    //     datasets: [{
-    //         label: 'Running Distance',
-    //         data: [2, 2.5, 3, 3.5],
-    //         fill: true,
-    //         backgroundColor: 'rgba(75, 192, 192, 0.2)',
-    //         borderColor: 'rgb(75, 192, 192)',
-    //         tension: 0.1
-    //     }]
-    // };
+   const filteredBenchData = liftData.filter((lift) => lift.title === "Bench" && lift.description.unit === "lbs");
+   const benchXAxis = filteredBenchData.map((lift) => formattedDate(lift.createdAt));
+   const benchYAxis = filteredBenchData.map((lift) => lift.description.weight);
 
-    const strengthChartCtx = document.getElementById('strength-chart').getContext('2d');
-    const strengthChart = new Chart(strengthChartCtx, {
-        type: 'line',
-        data: strengthData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+   const ctxBench = document.getElementById("bench-chart").getContext("2d");
+   const benchChart = new Chart(ctxBench, {
+      type: "line",
+      data: {
+         labels: benchXAxis,
+         datasets: [
+            {
+               label: "Bench",
+               data: benchYAxis,
+               backgroundColor: "rgb(46, 156, 208)",
+               borderColor: "rgb(46, 156, 208)",
+               borderWidth: 1,
+            },
+         ],
+      },
+      options: {
+         scales: {
+            y: {
+               beginAtZero: true,
+               title: {
+                  display: true,
+                  text: "Weight (lbs)", // Label for the y-axis
+                  color: "rgb(46, 156, 208)",
+               },
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: "Date Added", // Label for the x-axis
+                  color: "rgb(46, 156, 208)",
+               },
+            },
+         },
+      },
+   });
 
-    const enduranceChartCtx = document.getElementById('endurance-chart').getContext('2d');
-    const enduranceChart = new Chart(enduranceChartCtx, {
-        type: 'line',
-        data: enduranceData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-});
+   const filteredDeadliftData = liftData.filter((lift) => lift.title === "Deadlift" && lift.description.unit === "lbs");
+   const deadliftXAxis = filteredDeadliftData.map((lift) => formattedDate(lift.createdAt));
+   const deadliftYAxis = filteredDeadliftData.map((lift) => lift.description.weight);
 
-app.get('/progress', (req, res) => {
-   
-    const goalsData = [
-        { description: 'Bench Press 300 lbs', percentage: 75 }, // Add percentage value
-        { description: 'Run 5 miles without stopping', percentage: 50 }, // Add percentage value
-    ];
-  
-    res.render('progress', {
-      goals: goalsData,
-      
-    });
-  });
-
-
-
-
-document.getElementById('goalsButton').addEventListener('click', function() {
-  showGoalOptions();
-});
-
-function showGoalOptions() {
-    // Check if a modal already exists, if so, remove it
-    const existingModal = document.querySelector('.goal-options-modal');
-    if (existingModal) {
-        existingModal.remove();
-    }
-
-    // Create a new modal element
-    const modal = document.createElement('div');
-    modal.className = 'goal-options-modal';
-
-    // Add goal options to the modal
-    const goals = ['Stronger Bench', 'Stronger Deadlift', 'Run Faster'];
-    goals.forEach(goal => {
-        const goalButton = document.createElement('button');
-        goalButton.innerText = goal;
-        goalButton.addEventListener('click', function() {
-            // Here you can link to resources or handle the choice
-            window.location.href = '/resource/' + goal.replace(' ', '-').toLowerCase();
-        });
-        modal.appendChild(goalButton);
-    });
-
-    // Append the modal to the body or a specific div
-    document.body.appendChild(modal);
-    };
+   const ctxDeadlift = document.getElementById("deadlift-chart").getContext("2d");
+   const deadliftChart = new Chart(ctxDeadlift, {
+      type: "line",
+      data: {
+         labels: deadliftXAxis,
+         datasets: [
+            {
+               label: "Deadlift",
+               data: deadliftYAxis,
+               backgroundColor: "rgba(255, 99, 132)",
+               borderColor: "rgb(255, 99, 132)",
+               borderWidth: 1,
+            },
+         ],
+      },
+      options: {
+         scales: {
+            y: {
+               beginAtZero: true,
+               title: {
+                  display: true,
+                  text: "Weight (lbs)", // Label for the y-axis
+                  color: "rgb(230, 40, 58)",
+               },
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: "Date Added", // Label for the x-axis
+                  color: "rgb(230, 40, 58)",
+               },
+            },
+         },
+      },
+   });
+}
