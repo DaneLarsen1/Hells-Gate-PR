@@ -241,7 +241,9 @@ header {
     padding: 10px; 
     text-align: left; 
     display: flex; 
-    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; 
 }
 
 .promo-box {
@@ -592,3 +594,40 @@ footer {
     scrollbar-color: black grey;
     position: absolute;
   }
+
+  @media screen and (max-width: 992px) {
+    /* all pages */
+    #nav-bar {
+        font-size: 16px;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .logo-container .site-name {
+        font-size: 26px;
+        margin-left: 20px;
+    }
+
+    .logo-container img { 
+        display: block;
+        height: auto;
+        width: 200px;
+        padding: 5px;
+    }
+
+    .footer-logos {
+        gap: 140px;
+    }
+
+    /* progress */
+    .charts-section {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+
+    .chart-container {
+        height: 20vh;
+        width: 20vw; 
+    }
+}
