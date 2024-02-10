@@ -74,7 +74,7 @@ GIVEN A Gym/PR tracking webpage
 
 [Deployed URL on Heroku]()
 
-[Hells-gate-PR Repository](https://github.com/DaneLarsen1/Hells-Gate-PR)
+[Hells-Gate-PR Repository](https://github.com/DaneLarsen1/Hells-Gate-PR)
 
 ## License
 
