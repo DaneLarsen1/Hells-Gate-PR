@@ -58,6 +58,14 @@ router.get("/login", (req, res) => {
    }
 });
 
+router.get("/signup", async (req, res) => {
+   try {
+      res.render("signup")
+   } catch (err) {
+      res.status(500).json(err);
+   }
+});
+
 // Route to get the dashboard of personal lifts
 //TODO: ADD withAuth
 router.get("/dashboard", withAuth, async (req, res) => {
