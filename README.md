@@ -60,8 +60,15 @@ GIVEN A Gym/PR tracking webpage
 
 ## Output Example
 
-![Login/Signup Page](./assets/images/login-signup.PNG) ![Home Page](./assets/images/home.PNG) ![Dashboard](./assets/images/dashboard.PNG)
-![Progress Page](./assets/images/progress.PNG) ![PR Feed](./assets/images/prFeed.PNG)
+- ![Login/Signup Page](./assets/images/login-signup.PNG)
+
+- ![Home Page](./assets/images/home.PNG)
+
+- ![Dashboard](./assets/images/dashboard.PNG)
+
+- ![Progress Page](./assets/images/progress.PNG)
+
+- ![PR Feed](./assets/images/prFeed.PNG)
 
 ## Deployment
 
