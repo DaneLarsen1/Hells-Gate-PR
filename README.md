@@ -60,7 +60,9 @@ GIVEN A Gym/PR tracking webpage
 
 ## Output Example
 
-- ![Login/Signup Page](./assets/images/login-signup.PNG)
+- ![Login Page](./assets/images/login.PNG)
+
+- ![Signup Page](./assets/images/signup.PNG)
 
 - ![Home Page](./assets/images/home.PNG)
 
@@ -96,6 +98,6 @@ Ruthie Pina (https://github.com/ruthiepina)
 
 ## Questions
 
-Hells Gate Pr created by Dane Larsen, Cami Bagnani, Tony Pinski, Paul Orozco, and Ruthie Pina.
+Hells Gate Pr created by Dane Larsen, Camille Bagnani, Tony Pinski, Paul Orozco, and Ruthie Pina.
 
-For any additional questions or comments, please send an email to the repo creator [Dane Larsen](https://github.com/DaneLarsen1) at <>.
+For any additional questions or comments, please send an email to the repo creator [Dane Larsen](https://github.com/DaneLarsen1) at <danelarsen12@gmail.com>.
