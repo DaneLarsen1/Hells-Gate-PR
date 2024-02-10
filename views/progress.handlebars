@@ -1,36 +1,46 @@
 <div class="progress-page-container">
-    <div class="left-content">
-        <div class="overview-section">
-            <h2>Your Progress Overview</h2>
-            
-        </div>
+  <div class="left-content">
+    <div class="overview-section">
+      <h2>Your Progress Overview</h2>
 
-       {{!-- <div class="goals-section">
-  <h2>Current Goals</h2>
-  <button id="goalsButton" class="goals-button">Set New Goal</button>
-  {{#each goals}}
-    <div class="goal">
-      <p>{{this.description}}</p>
-      <div class="progress">
-        <div class="progress-bar" style="width: {{this.percentage}}%;"></div>
+    </div>
+
+    {{!-- <div class="goals-section">
+      <h2>Current Goals</h2>
+      <button id="goalsButton" class="goals-button">Set New Goal</button>
+      {{#each goals}}
+      <div class="goal">
+        <p>{{this.description}}</p>
+        <div class="progress">
+          <div class="progress-bar" style="width: {{this.percentage}}%;"></div>
+        </div>
       </div>
-    </div>
-  {{/each}}
-</div> --}}
+      {{/each}}
+    </div> --}}
+  </div>
+
+  <div class="charts-section">
+
+    <div class="chart-container">
+      {{!-- <h3>Strength Progress</h3> --}}
+      <canvas id="squat-chart" width="400" height="500"></canvas>
     </div>
 
-    <div class="charts-section">
-       
-        <div class="chart-container">
-            {{!-- <h3>Strength Progress</h3> --}}
-            <canvas id="strength-chart"></canvas>
-        </div>
 
-        <!-- Endurance Chart Container -->
-        {{!-- <div class="chart-container">
-            <h3>Endurance Progress</h3>
-            <canvas id="endurance-chart"></canvas>
-        </div> --}}
+    <div class="chart-container">
+      {{!-- <h3>Strength Progress</h3> --}}
+      <canvas id="bench-chart" width="400" height="500"></canvas>
     </div>
+
+    <div class="chart-container">
+      <canvas id="deadlift-chart" width="400" height="500"></canvas>
+    </div>
+
+    <!-- Endurance Chart Container -->
+    {{!-- <div class="chart-container">
+      <h3>Endurance Progress</h3>
+      <canvas id="endurance-chart"></canvas>
+    </div> --}}
+  </div>
 </div>
 <script src="/js/chart.js"></script>
