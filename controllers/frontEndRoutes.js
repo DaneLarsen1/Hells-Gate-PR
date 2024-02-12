@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const { Lift, User } = require("../models");
 const withAuth = require("../utils/auth");
-const sequelize = require("../config/connection")
+const sequelize = require("../config/connection");
 
 // Route to the home page
 router.get("/", async (req, res) => {
    try {
       res.render("home", {
          logged_in: req.session.logged_in,
-      })
+      });
    } catch (err) {
       res.status(500).json(err);
    }
@@ -16,7 +16,6 @@ router.get("/", async (req, res) => {
 
 // Route to feed HTML
 router.get("/feed", withAuth, async (req, res) => {
-   // TODO: ADD withAuth - withAuth checks if user is logged in, if not logged in, withAuth redirects users to log in, if logged in, proceed with function
    try {
       const liftData = await Lift.findAll({
          include: [
@@ -27,10 +26,8 @@ router.get("/feed", withAuth, async (req, res) => {
          ],
       });
 
-      // const lifts = liftData.map((lift) => lift.get({ plain: true }));
-
       const lifts = liftData.map((lift) => {
-         return lift.get({ plain: true })
+         return lift.get({ plain: true });
       });
 
       // If you're logged in, the home feed will render the home page and inject liftData
@@ -60,32 +57,26 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", async (req, res) => {
    try {
-      res.render("signup")
+      res.render("signup");
    } catch (err) {
       res.status(500).json(err);
    }
 });
 
 // Route to get the dashboard of personal lifts
-//TODO: ADD withAuth
 router.get("/dashboard", withAuth, async (req, res) => {
    try {
       const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
-
-      console.log(req.session)
 
       // liftData finds all data from Lift that matches the userId
       const liftData = await Lift.findAll({
          where: {
             user_id: userId,
-         }
+         },
       });
 
-
-      console.log('LIFT DATA', liftData[0])
-
       const lifts = liftData.map((lift) => {
-         return lift.get({ plain: true })
+         return lift.get({ plain: true });
       });
 
       // Renders the dashboard view with the user's liftData
@@ -103,8 +94,6 @@ router.get("/progress", withAuth, async (req, res) => {
    try {
       const userId = req.session.user_id; // Takes the saved data of the user's session to hold user id
 
-      console.log(req.session)
-
       // liftData finds all data from Lift that matches the userId
       const liftData = await Lift.findAll({
          where: {
@@ -113,7 +102,7 @@ router.get("/progress", withAuth, async (req, res) => {
       });
 
       const lifts = liftData.map((lift) => {
-         return lift.get({ plain: true })
+         return lift.get({ plain: true });
       });
 
       // Renders the dashboard view with the user's liftData
@@ -127,16 +116,14 @@ router.get("/progress", withAuth, async (req, res) => {
 });
 
 // Route to make a new post
-// TODO: Add withAuth
 router.get("/newpost", withAuth, async (req, res) => {
    try {
       res.render("newpost", {
          logged_in: req.session.logged_in,
-      })
+      });
    } catch (err) {
       res.status(500).json(err);
    }
 });
-
 
 module.exports = router;

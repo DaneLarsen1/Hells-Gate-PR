@@ -3,7 +3,6 @@ async function deleteFormHandler(event) {
 
    const id = window.location.toString().split("/")[window.location.toString().split("/").length - 1];
    const response = await fetch(`/api/lift/userLifts/${id}`, {
-      //* same question, should this be lifts or posts??
       method: "DELETE",
    });
 

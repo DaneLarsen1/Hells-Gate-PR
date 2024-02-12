@@ -60,27 +60,27 @@ GIVEN A Gym/PR tracking webpage
 
 ## Output Example
 
-- ![Login Page](./assets/images/login.PNG)
+-  ![Login Page](./assets/images/login.PNG)
 
-- ![Signup Page](./assets/images/signup.PNG)
+-  ![Signup Page](./assets/images/signup.PNG)
 
-- ![Home Page](./assets/images/home.PNG)
+-  ![Home Page](./assets/images/home.PNG)
 
-- ![Dashboard](./assets/images/dashboard.PNG)
+-  ![Dashboard](./assets/images/dashboard.PNG)
 
-- ![Progress Page](./assets/images/progress.PNG)
+-  ![Progress Page](./assets/images/progress.PNG)
 
-- ![PR Feed](./assets/images/prFeed.PNG)
+-  ![PR Feed](./assets/images/prFeed.PNG)
 
 ## Deployment
 
-[Deployed URL on Heroku]()
+[Deployed URL on Heroku](https://secret-spire-07174-9e0cafb948bb.herokuapp.com/)
 
-[Hells-Gate-PR Repository](https://github.com/DaneLarsen1/Hells-Gate-PR)
+[Hells-Gate-PR Repository](https://github.com/camillebagnani/Hells-Gate-PR)
 
 ## License
 
-Copyright (c) 2024 Dane Larsen. All rights reserved.
+Copyright (c) 2024 Camille Bagnani. All rights reserved.
 
 Licensed under the [MIT License](https://choosealicense.com/licenses/mit).
 
@@ -100,4 +100,5 @@ Ruthie Pina (https://github.com/ruthiepina)
 
 Hells Gate Pr created by Dane Larsen, Camille Bagnani, Tony Pinski, Paul Orozco, and Ruthie Pina.
 
-For any additional questions or comments, please send an email to the repo creator [Dane Larsen](https://github.com/DaneLarsen1) at <danelarsen12@gmail.com>.
+For any additional questions or comments, please send an email to the repo creator [Camille Bagnani](https://github.com/camillebagnani) at
+<camillebagnani@gmail.com>.
